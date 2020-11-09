@@ -1,9 +1,19 @@
 // script.js will host js components, including slider code
 window.onload = function(){
 
-  // let newTile = new Tile(parameters go here);
 
-  document.querySelector("#sliderColor").addEventListener("input",outputColorUpdate);
+  let newTile = new Tile(100,0,60,1);
+  newTile.display();
+
+  let anotherTile = new Tile(200,0,60,1);
+  console.log(anotherTile);
+  let anothwidth = anotherTile.attr('width');
+  // let height= anotherTile.height();
+  console.log(anothwidth);
+  // anotherTile.move(width/2,height/2);
+
+
+  // document.querySelector("#sliderColor").addEventListener("input",outputColorUpdate);
 //this is from Sabine's files - trying to adapt to our proj
   function outputAlphaUpdate() {
   	document.querySelector('#colorOut').value = this.value;
@@ -13,4 +23,6 @@ window.onload = function(){
       movingShapes.shapeList[i].letterC.style.color = "rgba(255,255,255,"+movingShapes.shapeList[i].a+")";
 
     }
+}
+
 }
