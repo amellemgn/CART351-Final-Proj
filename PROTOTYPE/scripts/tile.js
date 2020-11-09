@@ -21,4 +21,15 @@ function Tile(r, g, b, a){
 
     let map = $("#map").append(hex);
   }
+
+  this.colorUpdate = function(){
+    document.querySelector('#colorOut').value = this.value;
+    hex.fill("rgba(149,0,"+this.value+")");
+
+  // want to use their radial gradient from here: https://www.w3schools.com/graphics/canvas_gradients.asp but without canvas :( so we can use a canvas_gradient
+  // that connects two color inputs
+  }
+
+
+
 }

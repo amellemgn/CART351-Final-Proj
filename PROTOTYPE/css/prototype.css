@@ -37,3 +37,13 @@
  fill: lavender;
   height: 100px;
 }
+
+#slideContainer{
+  /* border-style: inset;
+  border-color: black; */
+}
+#mapContainer{
+  /* width: 800px;
+  border-style: inset;
+  border-color: black; */
+}
