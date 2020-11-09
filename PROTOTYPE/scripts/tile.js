@@ -13,7 +13,6 @@ function Tile(r, g, b, a){
   this.a=a;
 
 //using https://svgjs.com/docs/3.0/shape-elements/#svg-polygon
-
   this.display = function(){
     let draw = SVG().addTo('body').size(300, 300);
 
@@ -22,7 +21,4 @@ function Tile(r, g, b, a){
 
     let map = $("#map").append(hex);
   }
-
-  // this.box.style.background = "rgba("+this.r+","+this.g+","+this.b+","+this.a+")";
-  // document.getElementById("map").appendChild(this.box);
 }

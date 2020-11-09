@@ -37,8 +37,6 @@
     <div class = "mapContainer" id = "mapContainer">
       <h3> Locate urself </h3>
       <div id = "map">
-        <div id= "triangle"> </div>
-      <script>
       </div>
     </div>
 <!-- links and stuff are in the rightmost column called linksContainer -->

@@ -12,13 +12,19 @@ window.onload = function(){
   console.log(anothwidth);
   // anotherTile.move(width/2,height/2);
 
+//adding an event listener to the UI slider to register input
+  document.querySelector("#sliderColor").addEventListener("input",outputColorUpdate);
 
-  // document.querySelector("#sliderColor").addEventListener("input",outputColorUpdate);
+//callback for slider
+function outputColorUpdate(){
+  document.querySelector("#colorOut").value = this.value;
+
+}
 //this is from Sabine's files - trying to adapt to our proj
-  function outputAlphaUpdate() {
+  function outputColorUpdate() {
   	document.querySelector('#colorOut').value = this.value;
     for(let i =0; i<movingShapes.shapeList.length; i++){
-      movingShapes.shapeList[i].a = this.value/100;
+      newTile.a = this.value/100;
       movingShapes.shapeList[i].box.style.background = "rgba("+movingShapes.shapeList[i].r+","+movingShapes.shapeList[i].g+","+movingShapes.shapeList[i].b+","+movingShapes.shapeList[i].a+")";
       movingShapes.shapeList[i].letterC.style.color = "rgba(255,255,255,"+movingShapes.shapeList[i].a+")";
 
