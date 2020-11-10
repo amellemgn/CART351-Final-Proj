@@ -11,7 +11,7 @@ let hexobjB = new HexObj(50,50,50);
 
 // representative of the svg itself.
 // showing seperation between having an array of points and then drawing them.
-const hexSymbol = draw.symbol()
+const hexSymbol = draw.symbol();
   // map the corners' positions to a string and create a polygon
   //polyon function requires a string.
   // .map basically takes the array of x, y positions and converts it into a string of values.
