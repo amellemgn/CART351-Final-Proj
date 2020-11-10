@@ -29,7 +29,7 @@
       <h3> Change Hex Values: </h3>
       <div class = "sliderColor">
         <label for="sliderColor"> Primary Color </label>
-        <input type="range" min="1" max="50" value="25" class="slider" id="Color">
+        <input type="range" min="1" max="255" value="25" class="slider" id="Color">
         <output for="slideColor" id="colorOut">25</output>
       </div>
       <div class = "sliderColor2">
