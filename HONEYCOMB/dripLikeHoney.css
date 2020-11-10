@@ -1,0 +1,40 @@
+body{
+  background-image:url('images/grid_bg.jpg');
+}
+
+#title{
+  background-color: white;
+  font-family: monospace;
+  font-weight: bold;
+  width: 50%;
+  margin-left: 15%;
+  border-radius: 20px;
+  text-align: center;
+  padding: 10px;
+
+}
+
+#container{
+  overflow: scroll;
+  height: xx;
+}
+
+.qs{
+  background-color:rgb(200,250,250);
+  width:50%;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5px;
+  font-family: monospace;
+  font-weight: bold;
+  color: rgb(50,150,250);
+}
+
+#button{
+  background-color: lavender;
+  font-family: monospace;
+  font-weight: bold;
+  border-radius:10px;
+  margin-left: 30%;
+  padding: 20px;
+}
