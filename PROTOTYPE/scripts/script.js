@@ -2,7 +2,7 @@
 window.onload = function() {
 
 
-  let newTile = new Tile(100, 0, 60, 1);
+  let newTile = new Tile(20, 40, 100, 1);
   newTile.display();
 
   // let anotherTile = new Tile(200, 0, 60, 1);
