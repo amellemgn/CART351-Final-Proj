@@ -1,33 +1,21 @@
-//hexObj takes three parameters. calculating each point's x, y coordinates using coordinates.
-// finding center of circles, calculating each x, y point
-
-function HexObj(centerX,centerY, huevalue, huevalue2, draw){
+function HexObj(centerX,centerY, lineLength){
 
 this.positions = [];
 this.centerX = centerX;
 this.centerY = centerY;
-this.huevalue = huevalue;
-this.huevalue2 = huevalue2;
-this.lineLength = 50;
-this.draw = draw;
-this.hex = null;
-this.colA =0;
-this.colB = "#FFFFFF";
+this.lineLength = lineLength;
+this.draw = SVG().addTo('#container').size('300px', '300px');
 this.r = 0;
 this.g =0;
 this.b=0;
 this.a=1;
-let self = this;
-// this is also used in the gradient function so we're defining
-// self as an alt 'this'
-
+this.colA =255;
+let self =this;
 
 const NUM_SIDES = 6;
 //make an array of positions
-//calculating six positions - dynamically.
 for(let i=0; i<NUM_SIDES; i++)
 {
-  //returns hex values in an array.
   this.positions.push(new PosVector(
     flat_hex_cornerX(this.centerX, this.lineLength, i),
     flat_hex_cornerY(this.centerY, this.lineLength, i)
@@ -38,7 +26,7 @@ this.display = function(){
   this.hexSymbol = this.draw.symbol()
     // map the corners' positions to a string and create a polygon
     .polygon(this.positions.map(({ x, y }) => `${x},${y}`))
-     // .fill('#FFFFFF')
+     .fill('#ff0000')
     .stroke({ width: 1, color: '#999' })
     this.draw.use(this.hexSymbol);
       //draw.use(hexSymbol).translate(50, 10);
@@ -46,15 +34,11 @@ this.display = function(){
 
 
   this.appendGradient = function(){
-    console.log("here");
 
     let gradient = this.draw.gradient('linear', function(add) {
-      let translatedHue = hslToHex(huevalue, 100, 70);
-      console.log(translatedHue);
-
-      add.stop(0, translatedHue);
-      console.log(parseInt(self.huevalue2));
-      let hexVal = rgbToHex(parseInt(self.huevalue2),self.g,self.b);
+      add.stop(0, "#ffffff");
+      console.log(parseInt(self.colA));
+      let hexVal = rgbToHex(parseInt(self.colA),self.g,self.b);
       console.log(hexVal);
       add.stop(1,hexVal);
     })
@@ -62,11 +46,11 @@ this.display = function(){
     this.hexSymbol.attr({fill:gradient});
   }
 
+
 }//end class
 
 /** HELPER **/
   // to calculate an xpos
-  //helper functions - calculte x and y at a given angle. each point is 60 degrees apart.
     function flat_hex_cornerX(cx, size, i){
         let angle_deg = 60 * i;
         // convert to radians
@@ -95,32 +79,3 @@ function PosVector(x,y){
   function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
   }
-
-  function hslToHex(h, s, l) {
-  h /= 360;
-  s /= 100;
-  l /= 100;
-  let r, g, b;
-  if (s === 0) {
-    r = g = b = l; // achromatic
-  } else {
-    const hue2rgb = (p, q, t) => {
-      if (t < 0) t += 1;
-      if (t > 1) t -= 1;
-      if (t < 1 / 6) return p + (q - p) * 6 * t;
-      if (t < 1 / 2) return q;
-      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
-      return p;
-    };
-    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-    const p = 2 * l - q;
-    r = hue2rgb(p, q, h + 1 / 3);
-    g = hue2rgb(p, q, h);
-    b = hue2rgb(p, q, h - 1 / 3);
-  }
-  const toHex = x => {
-    const hex = Math.round(x * 255).toString(16);
-    return hex.length === 1 ? '0' + hex : hex;
-  };
-  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
-}

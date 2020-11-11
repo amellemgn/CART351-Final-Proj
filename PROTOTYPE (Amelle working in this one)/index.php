@@ -25,12 +25,12 @@
 <div id="formWrapper">
   <div class="qs" id="q1">
     <p>From the ocean to the desert, where do you bury your toes</p>
-    <input type="range" id="hue1" min="0" max="360" step="1" />
+    <input type="range" id="hue1" min="0" max="255" step="1" />
   </div>
 
   <div class="qs" id="q2">
     <p>From overcast nightmare to balmy fantasy, how did you dream</p>
-    <input type="range" id="hue2" min="0" max="360" step="1"/>
+    <input type="range" id="hue2" min="0" max="255" step="1"/>
   </div>
 
   <div class="qs" id="q3">
