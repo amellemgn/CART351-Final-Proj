@@ -1,7 +1,7 @@
 //hexObj takes three parameters. calculating each point's x, y coordinates using coordinates.
 // finding center of circles, calculating each x, y point
 
-function HexObj(centerX,centerY, huevalue, huevalue2, draw){
+function HexObj(centerX,centerY, huevalue, huevalue2, draw, inputText){
 
 this.positions = [];
 this.centerX = centerX;
@@ -10,6 +10,7 @@ this.huevalue = huevalue;
 this.huevalue2 = huevalue2;
 this.lineLength = 50;
 this.draw = draw;
+this.inputText = inputText;
 this.hex = null;
 this.colA =0;
 this.colB = "#FFFFFF";
@@ -39,6 +40,7 @@ this.display = function(){
     // map the corners' positions to a string and create a polygon
     .polygon(this.positions.map(({ x, y }) => `${x},${y}`))
      // .fill('#FFFFFF')
+    // .id("hexagon")
     .stroke({ width: 1, color: '#999' })
     this.draw.use(this.hexSymbol);
       //draw.use(hexSymbol).translate(50, 10);
@@ -61,6 +63,15 @@ this.display = function(){
   //  this.draw.append('<svg id="gradientdef"><defs><linearGradient id = "gradient 1"<stop class="stop1" offset="0%" style="stop-color:white/> <stop class="stop2" offset="50%" style="stop-color:blue/> /> </linearGradient></defs></svg>');
     this.hexSymbol.attr({fill:gradient});
   }
+
+ this.appendText= function(){
+   console.log(inputText);
+   let newTextDiv = '<div>'+ this.inputText+ '</div>';
+   $('#container').append(newTextDiv);
+   $(newTextDiv).css({top: this.centerX, left: this.centerX});
+   //uhhh this doesnt work because theyre not separate svg elements. 
+   // this.hexSymbol.hover(this.("#textFromInput").css("display","block"), $("textFromInput").css("display", "none"));
+ }
 
 }//end class
 
@@ -95,7 +106,7 @@ function PosVector(x,y){
   function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
   }
-
+// translates hsl to Hex bc gradient only takes hex. Found online
   function hslToHex(h, s, l) {
   h /= 360;
   s /= 100;
