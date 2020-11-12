@@ -15,6 +15,8 @@
   <script src="scripts/honeycomb.min.js"></script>
   <script src="scripts/svg.js"></script>
   <script src="scripts/hexObj.js"></script>
+  <style>
+  </style>
 </head>
 
 <body>

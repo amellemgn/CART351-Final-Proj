@@ -2,6 +2,12 @@ body{
   background-image:url('/images/grid_bg.jpg');
 }
 
+#formWrapper{
+  margin-left: 25%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  align-items: center;
+}
 #title{
   background-color: white;
   font-family: monospace;
@@ -15,9 +21,21 @@ body{
 }
 
 #container{
-  overflow: scroll;
-  height: xx;
+  overflow: hidden;
+  border-radius:30px;
+  height: 1000px;
+  background-color:rgba(255,255,255,0.2);
 }
+
+::-webkit-scrollbar{
+  width: 10px;
+  background: #888;
+}
+::-webkit-scrollbar-thumb{
+  border-radius:5px;
+ background:black;
+}
+
 
 .qs{
   background-color:rgb(200,250,250);
@@ -30,12 +48,24 @@ body{
   color: rgb(50,150,250);
 }
 
+input[type=range] {
+  width: 60%;
+  margin-left: 15%;
+}
+
+input[type=text]{
+  width: 96%;
+  margin-left: 2%;
+  border-radius: 10px;
+  padding: 5px;
+}
+
 #button{
   background-color: lavender;
   font-family: monospace;
   font-weight: bold;
   border-radius:10px;
-  margin-left: 30%;
+  margin-left: 35%;
   padding: 20px;
 }
 
@@ -44,4 +74,23 @@ body{
   z-index: 10;
   font-size: 8px;
   display: none;
+}
+
+#draw{
+  z-index:-1;
+}
+
+#displayInput{
+  z-index: 100000;
+  background-color: rgba(100,100,255,0.2);
+  border-style:solid;
+  width:50%;
+  border-color: rgba(100,100,255,0.7);
+  border-radius: 20px;
+  padding: 10px;
+  font-family:monospace;
+  /* font-weight: bold; */
+  font-size: 20px;
+  color: white;
+
 }

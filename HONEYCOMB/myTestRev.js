@@ -47,6 +47,7 @@ let hexObjs = [hexobjA, hexobjB];
 
       console.log(count);
 
+
       huevalue = document.getElementById("hue1").value;
       console.log(huevalue);
 
@@ -60,7 +61,7 @@ let hexObjs = [hexobjA, hexobjB];
     tileY = xRange*docHeight;
 
       console.log(tileX,tileY);
-      //we can make this more complex eventually
+      //we can make this more complex eventually, or not lol
       let newHex = new HexObj(tileX,tileY);
       hexObjs.push(newHex);
       console.log(newHex.lineLength);

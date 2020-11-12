@@ -1,7 +1,7 @@
 //hexObj takes three parameters. calculating each point's x, y coordinates using coordinates.
 // finding center of circles, calculating each x, y point
 
-function HexObj(centerX,centerY, huevalue, huevalue2, draw, inputText){
+function HexObj(centerX,centerY, huevalue, huevalue2, inputText,id,draw){
 
 this.positions = [];
 this.centerX = centerX;
@@ -9,7 +9,7 @@ this.centerY = centerY;
 this.huevalue = huevalue;
 this.huevalue2 = huevalue2;
 this.lineLength = 50;
-this.draw = draw;
+// this.draw = draw;
 this.inputText = inputText;
 this.hex = null;
 this.colA =0;
@@ -18,7 +18,10 @@ this.r = 0;
 this.g =0;
 this.b=0;
 this.a=1;
+this.hexID =id;
 let self = this;
+this.draw = draw;
+
 // this is also used in the gradient function so we're defining
 // self as an alt 'this'
 
@@ -36,13 +39,15 @@ for(let i=0; i<NUM_SIDES; i++)
 }
 
 this.display = function(){
+  // this.draw = SVG().addTo('#container').size('100px', '100px').id(this.hexID).addClass("hex");
   this.hexSymbol = this.draw.symbol()
     // map the corners' positions to a string and create a polygon
     .polygon(this.positions.map(({ x, y }) => `${x},${y}`))
      // .fill('#FFFFFF')
     // .id("hexagon")
-    .stroke({ width: 1, color: '#999' })
+    // .stroke({ width: 1, color: '#999' })
     this.draw.use(this.hexSymbol);
+    console.log("heloooooooooo");
       //draw.use(hexSymbol).translate(50, 10);
 }
 
@@ -64,14 +69,14 @@ this.display = function(){
     this.hexSymbol.attr({fill:gradient});
   }
 
- this.appendText= function(){
-   console.log(inputText);
-   let newTextDiv = '<div>'+ this.inputText+ '</div>';
-   $('#container').append(newTextDiv);
-   $(newTextDiv).css({top: this.centerX, left: this.centerX});
-   //uhhh this doesnt work because theyre not separate svg elements. 
-   // this.hexSymbol.hover(this.("#textFromInput").css("display","block"), $("textFromInput").css("display", "none"));
- }
+ // this.appendText= function(){
+ //   console.log(inputText);
+ //   let newTextDiv = '<div>'+ this.inputText+ '</div>';
+ //   $('#container').append(newTextDiv);
+ //   $(newTextDiv).css({top: this.centerX, left: this.centerX});
+ //   //uhhh this doesnt work because theyre not separate svg elements.
+ //   // this.hexSymbol.hover(this.("#textFromInput").css("display","block"), $("textFromInput").css("display", "none"));
+ // }
 
 }//end class
 
