@@ -83,10 +83,11 @@ if (hexObjs.length >= 1){
 
               console.log("we're in!")
 
-          let textContainer = $("<div>").attr("id","displayInput").text(hexObjs[i].inputText);
+          let textContainer = $("<div>").attr("id",i).addClass('displayInput').text(hexObjs[i].inputText);
+          console.log(textContainer);
           textContainer.appendTo('#formWrapper');
-          document.getElementById('displayInput').onclick = function(){
-            (this).remove();
+          document.getElementById(i).onclick = function(){
+            this.remove();
           }
 
           }

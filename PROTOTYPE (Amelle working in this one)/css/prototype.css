@@ -80,7 +80,7 @@ input[type=text]{
   z-index:-1;
 }
 
-#displayInput{
+.displayInput{
   z-index: 100000;
   background-color: rgba(100,100,255,0.2);
   border-style:solid;
