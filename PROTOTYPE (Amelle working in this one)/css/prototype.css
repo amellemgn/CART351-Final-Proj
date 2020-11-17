@@ -1,5 +1,5 @@
 body{
-  background-image:url('/images/grid_bg.jpg');
+  background-image:url('https://hybrid.concordia.ca/j_galb/prototype/images/grid_bg.jpg');
 }
 
 #formWrapper{
@@ -81,10 +81,11 @@ input[type=text]{
 }
 
 .displayInput{
-  z-index: 100000;
+  position: absolute;
+  z-index: 5;
   background-color: rgba(100,100,255,0.2);
   border-style:solid;
-  width:50%;
+  width:30%;
   border-color: rgba(100,100,255,0.7);
   border-radius: 20px;
   padding: 10px;
@@ -92,5 +93,8 @@ input[type=text]{
   /* font-weight: bold; */
   font-size: 20px;
   color: white;
+}
 
+.hello{
+  position: absolute;
 }

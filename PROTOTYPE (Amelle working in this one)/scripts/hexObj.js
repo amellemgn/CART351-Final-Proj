@@ -1,7 +1,7 @@
 //hexObj takes three parameters. calculating each point's x, y coordinates using coordinates.
 // finding center of circles, calculating each x, y point
 
-function HexObj(centerX,centerY, huevalue, huevalue2, inputText,id,draw){
+function HexObj(centerX,centerY, huevalue, huevalue2, inputText,id){
 
 this.positions = [];
 this.centerX = centerX;
@@ -20,7 +20,7 @@ this.b=0;
 this.a=1;
 this.hexID =id;
 let self = this;
-this.draw = draw;
+this.draw = SVG().addTo('#container').size('100px', '100px').id(this.hexID).addClass("hello");
 
 // this is also used in the gradient function so we're defining
 // self as an alt 'this'

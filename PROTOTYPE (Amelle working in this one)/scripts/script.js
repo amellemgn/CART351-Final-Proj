@@ -1,9 +1,8 @@
 SVG.on(document, 'DOMContentLoaded', function() {
-  let draw = SVG().addTo('#container').size('100%','100%').id("hello");
 
   // const draw = SVG().addTo('#container').size('100%', '100%');
 
- //use the SVG() function to create an SVG document and add it to the html page:
+  //use the SVG() function to create an SVG document and add it to the html page:
   // an SVG symbol can be reused
 
   let hexObjs = [];
@@ -15,13 +14,6 @@ SVG.on(document, 'DOMContentLoaded', function() {
   let tileY;
   // $('#hue').change(getHueValue);
   $('#button').on('click', newOnClick);
-  mouseLocate();
-
-if (hexObjs.length >= 1){
-
-
-
-}
 
   let count = 0;
 
@@ -55,43 +47,47 @@ if (hexObjs.length >= 1){
     tileX = xRange * docWidth;
     tileY = xRange * docHeight;
 
-    console.log(tileX, tileY, huevalue, huevalue2);
     //we can make this more complex eventually
-    let newHex = new HexObj(tileX, tileY, huevalue, huevalue2, inputText,count,draw);
-    console.log(inputText);
+    let newHex = new HexObj(50, 50, huevalue, huevalue2, inputText, count);
     hexObjs.push(newHex);
+
+    $('#' + count).css({
+      'margin-left': tileX,
+      'margin-top': tileY
+    });
+    // document.getElementById(count).style.top=tileY;
     newHex.display();
+
     newHex.appendGradient();
     // newHex.appendText();
-    console.log(newHex.lineLength);
-   // end of newOnClick function
-  document.getElementById("inputText").value = "";
+    console.log("input text" + newHex.inputText);
+    // end of newOnClick function
+    mouseLocate();
+    document.getElementById("inputText").value = "";
   }
 
-  function mouseLocate(){
+  function mouseLocate() {
 
-    document.getElementById('container').onclick = function clickEvent(e) {
-          // e = Mouse click event.
-          var x = e.pageX - this.offsetLeft;
-          var y = e.pageY - this.offsetTop;
+    for (i = 0; i < hexObjs.length; i++) {
+      let hexId = hexObjs[i].hexID;
+      let obj = hexObjs[i];
 
-          console.log("Left? : " + x + " ; Top? : " + y + ".");
+      let objPosX = $('#'+hexId).css('margin-left');
+      let objPosY = $('#'+hexId).css('margin-top');
 
-          for (i=0;i<hexObjs.length;i++){
-              let differenceX = Math.abs(hexObjs[i].tileX, x);
-              let differenceY = Math.abs(hexObjs[i].tileY, y);
+      let words = hexObjs[i].inputText;
 
-              console.log("we're in!")
+      $('#'+hexId).on('click', function () {
+        let textContainer = $("<div>").attr("id", i).addClass('displayInput').text(words);
+        textContainer.css({'margin-top': objPosY, 'margin-left': objPosX});
+        textContainer.appendTo('#container');
 
-          let textContainer = $("<div>").attr("id",i).addClass('displayInput').text(hexObjs[i].inputText);
-          console.log(textContainer);
-          textContainer.appendTo('#formWrapper');
-          document.getElementById(i).onclick = function(){
-            this.remove();
-          }
-
-          }
-        }
+      textContainer.on('click', function() {
+          console.log("hey");
+          this.remove();
+        });
+      });
+    }
   }
 
 

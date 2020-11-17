@@ -51,8 +51,8 @@
   </div>
 
   <div class="qs" id="q6">
-    <p>From still pond at dusk to cloud of flustered insects, how busy is your heart </p>
-    <input type="text" id="inputText" size="24" maxlength = "40" />
+    <p>Can words contain the motion of your being? </p>
+    <input type="text" id="inputText" size="24" maxlength = "10000" />
   </div>
 
   <input type="button" id="button" type="button" value="Click to Add Tile">
