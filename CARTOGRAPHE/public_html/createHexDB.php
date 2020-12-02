@@ -1,6 +1,6 @@
 <?php
 try {
-    $hex_db = new PDO('sqlite:C:\Users\Jules\Documents\GitHub\template folder\CART351-Final-Proj\CARTOGRAPHE/db/hexDB.db');
+    $hex_db = new PDO('sqlite:../db/hexDB.db');
     $hex_db->setAttribute(PDO::ATTR_ERRMODE,
                             PDO::ERRMODE_EXCEPTION);
 
