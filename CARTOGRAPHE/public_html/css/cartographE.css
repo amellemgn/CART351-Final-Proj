@@ -13,7 +13,7 @@ body{
   font-family: monospace;
   font-weight: bold;
   width: 50%;
-  margin-left: 15%;
+  margin-left: 22%;
   border-radius: 20px;
   text-align: center;
   padding: 10px;
@@ -39,9 +39,11 @@ body{
 
 .qs{
   background-color:rgb(200,250,250);
-  width:50%;
+  /* width:50%; */
   border-radius: 20px;
   padding: 10px;
+  padding-left: 10%;;
+  padding-right: 10%;
   margin: 5px;
   font-family: monospace;
   font-weight: bold;
@@ -97,4 +99,13 @@ input[type=text]{
 
 .hello{
   position: absolute;
+}
+
+fieldset{
+  border-style: none;
+}
+form{
+  background-color: #9092ad;
+  width: 60%;
+  border-radius: 30px;
 }
