@@ -3,7 +3,7 @@
 <?php
       require('createHexDB.php');
 
-      if($_server['REQUEST_METHOD'] == 'POST'){
+      if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $hue1 = $_POST['hue1'];
         $hue2 = $_POST['hue2'];
         $xVal = $_POST['xRange'];
