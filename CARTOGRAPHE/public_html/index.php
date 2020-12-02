@@ -1,5 +1,3 @@
-<!-- index.php - file that will host the UI (html + drawing / interacting with the tile -->
-
 <?php
       require('createHexDB.php');
 
@@ -8,7 +6,7 @@
         $hue2 = $_POST['hue2'];
         $xVal = $_POST['xRange'];
         $yVal = $_POST['yRange'];
-        $text = $_POST['inputText'];
+        $text = $_POST['userWords'];
 
 
       $hue1_clean = $hex_db->quote($hue1);
@@ -17,9 +15,10 @@
       $yVal_clean = $hex_db->quote($yVal);
       $text_clean = $hex_db->quote($text);
 
-      $queryInsert = "INSERT INTO userHexes(colour1,colour2,xPos,yPos,userText) VALUES ($hue1_clean,$hue2_clean,$xVal_clean,$yVal_clean,$text_clean)";
+      $queryInsert = "INSERT INTO userHexes(color1,color2,xPos,yPos,userText) VALUES ($hue1_clean,$hue2_clean,$xVal_clean,$yVal_clean,$text_clean)";
       $hex_db-> exec($queryInsert);
 
+      echo($text);
       $hex_db = null;
       exit;
     }
@@ -35,6 +34,7 @@
   <script src="scripts/honeycomb.min.js"></script>
   <script src="scripts/svg.js"></script>
   <script src="scripts/hexObj.js"></script>
+
   <style>
   </style>
 </head>
@@ -45,7 +45,7 @@
   <p>(qualitative rating scale)</p></div>
 
 <div id="formWrapper">
-  <form id='hexForm'  action="" enctype ="multipart/form-data">
+  <form id='hexForm'  action="" enctype ="form-data">
   <fieldset>
   <div class="qs" id="q1">
     <p>From the ocean to the desert, where do you bury your toes</p>
@@ -74,10 +74,11 @@
 
   <div class="qs" id="q6">
     <p>Can you put into words the character of your affective state? What causes inside or outside you have contributed to it?</p>
-    <input type="text" id="inputText" name='inputText' size="24" maxlength = "10000" />
+    <input type="text" id="inputText" name='userWords' size="24" maxlength = "10000" value="I am here"/>
   </div>
 
   <input type="submit" id="button" value="Click to Add Yourself">
+
   <fieldset>
   </form>
 </div>
@@ -85,6 +86,7 @@
   <div id="container"></div>
   <div id="containerTwo"></div>
 
+  <script src="scripts/ajaxPost.js"></script>
   <script src="scripts/script.js"></script>
 </body>
 

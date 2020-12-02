@@ -42,7 +42,7 @@ SVG.on(document, 'DOMContentLoaded', function() {
     let docHeight = document.getElementById('container').clientHeight;
 
     let inputText = document.getElementById("inputText").value;
-    console.log(inputText);
+    // console.log(inputText);
 
     tileX = xRange * docWidth;
     tileY = xRange * docHeight;
@@ -60,10 +60,9 @@ SVG.on(document, 'DOMContentLoaded', function() {
 
     newHex.appendGradient();
     // newHex.appendText();
-    console.log("input text" + newHex.inputText);
+    // console.log("input text" + newHex.inputText);
     // end of newOnClick function
     mouseLocate();
-    document.getElementById("inputText").value = "";
   }
 
   function mouseLocate() {
