@@ -63,6 +63,7 @@ SVG.on(document, 'DOMContentLoaded', function() {
     // console.log("input text" + newHex.inputText);
     // end of newOnClick function
     mouseLocate();
+    // document.getElementById("inputText").value = "";
   }
 
   function mouseLocate() {

@@ -18,7 +18,21 @@
       $queryInsert = "INSERT INTO userHexes(color1,color2,xPos,yPos,userText) VALUES ($hue1_clean,$hue2_clean,$xVal_clean,$yVal_clean,$text_clean)";
       $hex_db-> exec($queryInsert);
 
-      echo($text);
+      $querySelect='SELECT * FROM userHexes';
+      $result = $hex_db->query($querySelect);
+     if (!$result) die("Cannot execute query.");
+
+     $allHexes = array();
+     $i=0;
+     while($row = $result->fetch(PDO::FETCH_ASSOC))
+      {
+        $allHexes[$i] = $row;
+        $i++;
+   }
+
+   $myJSONObj = json_encode($allHexes);
+   echo $myJSONObj;
+
       $hex_db = null;
       exit;
     }
@@ -42,8 +56,11 @@
 <body>
   <div id="title">
   <h1> HEX TEST </h1>
-  <p>(qualitative rating scale)</p></div>
+  <p id= 'title'>(qualitative rating scale)</p>
+  <div id='openModal'>Contribute Yourself to the Map</div>
+</div>
 
+<div id='modal'>
 <div id="formWrapper">
   <form id='hexForm'  action="" enctype ="form-data">
   <fieldset>
@@ -66,11 +83,6 @@
     <p>From still pond at dusk to cloud of flustered insects, how busy is your heart</p>
     <input type="range" id="yRange" name='yRange' min="0" max="1" step="0.01" />
   </div>
-<!--
-  <div class="qs" id="q5">
-    <p>From still pond at dusk to cloud of flustered insects, how busy is your heart </p>
-    <input type="range" id="noise" min="0" max="100" step="1" />
-  </div> -->
 
   <div class="qs" id="q6">
     <p>Can you put into words the character of your affective state? What causes inside or outside you have contributed to it?</p>
@@ -80,14 +92,42 @@
   <input type="submit" id="button" value="Click to Add Yourself">
 
   <fieldset>
+    <span class="close">&times;</span>
   </form>
+</div>
 </div>
 
   <div id="container"></div>
-  <div id="containerTwo"></div>
+  <!-- <div id="containerTwo"></div> -->
+
+  <script>
+//script from w3schools modal tutorial
+var modal = document.getElementById("modal");
+let formContainer = document.getElementById("formWrapper");
+let title = document.getElementById("title");
+var btn = document.getElementById("openModal");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+  formContainer.style.display ="block";
+  title.style.display ='none';
+}
+span.onclick = function() {
+  modal.style.display = "none";
+  title.style.display ='block';
+
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    title.style.display ='block';
+
+  }
+}
+  </script>
 
   <script src="scripts/ajaxPost.js"></script>
-  <script src="scripts/script.js"></script>
 </body>
 
 </html>
