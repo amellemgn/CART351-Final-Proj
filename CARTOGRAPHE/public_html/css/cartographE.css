@@ -2,6 +2,14 @@ body{
   background-image:url('https://hybrid.concordia.ca/j_galb/prototype/images/grid_bg.jpg');
 }
 
+  .cell {
+  border: 1px solid yellow;
+  min-width: 20px;
+  min-height: 20px;
+  display: inline-block;
+  margin-right: 2px;
+}
+
 #formWrapper{
   display: none;
   position: absolute;

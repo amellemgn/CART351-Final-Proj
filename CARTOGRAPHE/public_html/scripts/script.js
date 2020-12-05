@@ -72,23 +72,25 @@ SVG.on(document, 'DOMContentLoaded', function() {
       let hexId = hexObjs[i].hexID;
       let obj = hexObjs[i];
 
-      let objPosX = $('#'+hexId).css('margin-left');
-      let objPosY = $('#'+hexId).css('margin-top');
+      let objPosX = $('#' + hexId).css('margin-left');
+      let objPosY = $('#' + hexId).css('margin-top');
 
       let words = hexObjs[i].inputText;
 
-      $('#'+hexId).on('click', function () {
+      $('#' + hexId).on('click', function() {
         let textContainer = $("<div>").attr("id", i).addClass('displayInput').text(words);
-        textContainer.css({'margin-top': objPosY, 'margin-left': objPosX});
+        textContainer.css({
+          'margin-top': objPosY,
+          'margin-left': objPosX
+        });
         textContainer.appendTo('#container');
 
-      textContainer.on('click', function() {
+        textContainer.on('click', function() {
           console.log("hey");
           this.remove();
         });
       });
     }
   }
-
 
 });
