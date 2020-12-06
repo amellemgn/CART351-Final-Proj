@@ -125,7 +125,7 @@ btn.onclick = function() {
 }
 close.onclick = function() {
   modal.style.display = "none";
-  title.style.display ='none';
+  title.style.display ='block';
 
 }
 window.onclick = function(event) {

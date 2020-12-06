@@ -47,7 +47,6 @@ this.display = function(){
     // .id("hexagon")
     // .stroke({ width: 1, color: '#999' })
     this.draw.use(this.hexSymbol);
-    console.log("heloooooooooo");
       //draw.use(hexSymbol).translate(50, 10);
 }
 
@@ -57,12 +56,12 @@ this.display = function(){
 
     let gradient = this.draw.gradient('linear', function(add) {
       let translatedHue = hslToHex(huevalue, 100, 70);
-      console.log(translatedHue);
+      // console.log(translatedHue);
 
       add.stop(0, translatedHue);
-      console.log(parseInt(self.huevalue2));
+      // console.log(parseInt(self.huevalue2));
       let hexVal = rgbToHex(parseInt(self.huevalue2),self.g,self.b);
-      console.log(hexVal);
+      // console.log(hexVal);
       add.stop(1,hexVal);
     })
   //  this.draw.append('<svg id="gradientdef"><defs><linearGradient id = "gradient 1"<stop class="stop1" offset="0%" style="stop-color:white/> <stop class="stop2" offset="50%" style="stop-color:blue/> /> </linearGradient></defs></svg>');

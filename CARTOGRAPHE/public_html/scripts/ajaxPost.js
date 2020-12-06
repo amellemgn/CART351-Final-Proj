@@ -9,6 +9,10 @@ $(document).ready(function(init) {
   let tileY;
   let inputText;
 
+  let docWidth = document.getElementById('container').clientWidth;
+  let docHeight = document.getElementById('container').clientHeight;
+
+
 // init.preventDefault();
   $.ajax({
     type: "GET",
@@ -19,7 +23,7 @@ $(document).ready(function(init) {
     cache: false,
     timeout: 600000,
     success: function(initialResponse) {
-      console.log(initialResponse)
+      // console.log(initialResponse)
       //reponse is a STRING (not a JavaScript object -> so we need to convert)
       console.log("this is the get talking");
       // console.log(response);
@@ -29,8 +33,11 @@ $(document).ready(function(init) {
       //use the JSON .parse function to convert the JSON string into a Javascript object
 
       let firstJSON = JSON.parse(initialResponse);
-      console.log(firstJSON);
+      // console.log(firstJSON);
       displayHexes(firstJSON);
+      mouseLocate(firstJSON);
+
+      console.log(hexObjs);
 
       //reset the form
       // $('#hexForm')[0].reset();
@@ -75,6 +82,8 @@ $(document).ready(function(init) {
         let parsedJSON = JSON.parse(response);
         console.log(parsedJSON);
         displayLastHex(parsedJSON);
+        mouseLocate(parsedJSON);
+
 
         //reset the form
         $('#hexForm')[0].reset();
@@ -87,9 +96,6 @@ $(document).ready(function(init) {
   });
     function displayLastHex(response) {
 
-      let docWidth = document.getElementById('container').clientWidth;
-      let docHeight = document.getElementById('container').clientHeight;
-
       index = response.length - 1;
       huevalue = response[index].color1;
       huevalue2 = response[index].color2;
@@ -98,8 +104,8 @@ $(document).ready(function(init) {
       inputText = response[index].userText;
       count = response[index].userID;
 
-      tileX = xRange * docWidth;
-      tileY = yRange * docHeight;
+      tileX = (xRange * docWidth)-100;
+      tileY = yRange * (docHeight)-100;
 
       let newHex = new HexObj(50, 50, huevalue, huevalue2, inputText, count);
       hexObjs.push(newHex);
@@ -110,14 +116,10 @@ $(document).ready(function(init) {
       });
       // document.getElementById(count).style.top=tileY;
       newHex.display();
-
       newHex.appendGradient();
     }
 
     function displayHexes(response){
-      let docWidth = document.getElementById('container').clientWidth;
-      let docHeight = document.getElementById('container').clientHeight;
-
       for (i=0;i<response.length;i++){
 
       huevalue = response[i].color1;
@@ -131,7 +133,7 @@ $(document).ready(function(init) {
       tileY = yRange * docHeight;
 
       let newHex = new HexObj(50, 50, huevalue, huevalue2, inputText, count);
-      // hexObjs.push(newHex);
+      hexObjs.push(newHex);
 
       $('#' + count).css({
         'margin-left': tileX,
@@ -139,11 +141,39 @@ $(document).ready(function(init) {
       });
       // document.getElementById(count).style.top=tileY;
       newHex.display();
-
       newHex.appendGradient();
     }
     }
 
+    function mouseLocate(hexObjs) {
+
+      for (i = 0; i < hexObjs.length; i++) {
+        let hexId = hexObjs[i].userID;
+        let obj = hexObjs[i];
+
+        let objPosX = $('#' + hexId).css('margin-left');
+        let objPosY = $('#' + hexId).css('margin-top');
+
+        console.log(objPosY);
+
+        let words = hexObjs[i].userText;
+
+        $('#' + hexId).on('click', function() {
+          console.log("hiiiii");
+          let textContainer = $("<div>").attr("id", i).addClass('displayInput').text(words);
+          textContainer.css({
+            'margin-top': objPosY,
+            'margin-left': objPosX
+          });
+          textContainer.appendTo('#container');
+
+          textContainer.on('click', function() {
+            console.log("hey");
+            this.remove();
+          });
+        });
+      }
+    }
 
   //
   // const gridContainer = document.getElementById("container");
