@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function(init) {
 
   let hexObjs = [];
 
@@ -9,6 +9,37 @@ $(document).ready(function() {
   let tileY;
   let inputText;
 
+// init.preventDefault();
+  $.ajax({
+    type: "GET",
+    url: "../getWholePage.php",
+    data: 'json',
+    processData: false, //prevents from converting into a query string
+    contentType: false,
+    cache: false,
+    timeout: 600000,
+    success: function(initialResponse) {
+      console.log(initialResponse)
+      //reponse is a STRING (not a JavaScript object -> so we need to convert)
+      console.log("this is the get talking");
+      // console.log(response);
+
+      document.getElementById("inputText").value = "";
+
+      //use the JSON .parse function to convert the JSON string into a Javascript object
+
+      let firstJSON = JSON.parse(initialResponse);
+      console.log(firstJSON);
+      displayHexes(firstJSON);
+
+      //reset the form
+      // $('#hexForm')[0].reset();
+    },
+    error: function() {
+      console.log("error occurred");
+
+    }
+  });
 
   $("#hexForm").submit(function(event) {
     //stop submit the form, we will post it manually. PREVENT THE DEFAULT behaviour ...
@@ -17,10 +48,10 @@ $(document).ready(function() {
     let form = $('#hexForm')[0];
     let data = new FormData(form);
 
-    for (
-      let valuePairs of data.entries()) {
-      console.log(valuePairs[0] + ',' + valuePairs[1]);
-    }
+    // for (
+    //   let valuePairs of data.entries()) {
+    //   console.log(valuePairs[0] + ',' + valuePairs[1]);
+    // }
 
 
     $.ajax({
@@ -43,7 +74,7 @@ $(document).ready(function() {
 
         let parsedJSON = JSON.parse(response);
         console.log(parsedJSON);
-        displayHexes(parsedJSON);
+        displayLastHex(parsedJSON);
 
         //reset the form
         $('#hexForm')[0].reset();
@@ -53,8 +84,8 @@ $(document).ready(function() {
 
       }
     });
-
-    function displayHexes(response) {
+  });
+    function displayLastHex(response) {
 
       let docWidth = document.getElementById('container').clientWidth;
       let docHeight = document.getElementById('container').clientHeight;
@@ -82,9 +113,39 @@ $(document).ready(function() {
 
       newHex.appendGradient();
     }
-  });
 
-  // 
+    function displayHexes(response){
+      let docWidth = document.getElementById('container').clientWidth;
+      let docHeight = document.getElementById('container').clientHeight;
+
+      for (i=0;i<response.length;i++){
+
+      huevalue = response[i].color1;
+      huevalue2 = response[i].color2;
+      xRange = response[i].xPos;
+      yRange = response[i].yPos;
+      inputText = response[i].userText;
+      count = response[i].userID;
+
+      tileX = xRange * docWidth;
+      tileY = yRange * docHeight;
+
+      let newHex = new HexObj(50, 50, huevalue, huevalue2, inputText, count);
+      // hexObjs.push(newHex);
+
+      $('#' + count).css({
+        'margin-left': tileX,
+        'margin-top': tileY
+      });
+      // document.getElementById(count).style.top=tileY;
+      newHex.display();
+
+      newHex.appendGradient();
+    }
+    }
+
+
+  //
   // const gridContainer = document.getElementById("container");
   // let rows = document.getElementsByClassName("gridRow");
   // let cells = document.getElementsByClassName("cell")

@@ -1,7 +1,10 @@
 <?php
       require('createHexDB.php');
 
+
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+        try{
         $hue1 = $_POST['hue1'];
         $hue2 = $_POST['hue2'];
         $xVal = $_POST['xRange'];
@@ -34,8 +37,15 @@
    echo $myJSONObj;
 
       $hex_db = null;
-      exit;
-    }
+
+    } //end try
+     catch(PDOException $e) {
+       // Print PDOException message
+       echo $e->getMessage();
+
+     }
+    exit;
+  }
 ?>
 
 
@@ -115,7 +125,7 @@ btn.onclick = function() {
 }
 span.onclick = function() {
   modal.style.display = "none";
-  title.style.display ='block';
+  title.style.display ='none';
 
 }
 window.onclick = function(event) {
