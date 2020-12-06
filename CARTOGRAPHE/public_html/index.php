@@ -116,14 +116,14 @@ var modal = document.getElementById("modal");
 let formContainer = document.getElementById("formWrapper");
 let title = document.getElementById("title");
 var btn = document.getElementById("openModal");
-var span = document.getElementsByClassName("close")[0];
+var close = document.getElementById("button");
 
 btn.onclick = function() {
   modal.style.display = "block";
   formContainer.style.display ="block";
   title.style.display ='none';
 }
-span.onclick = function() {
+close.onclick = function() {
   modal.style.display = "none";
   title.style.display ='none';
 
