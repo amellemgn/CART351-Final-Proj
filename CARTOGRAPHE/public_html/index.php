@@ -58,17 +58,19 @@
   <script src="scripts/honeycomb.min.js"></script>
   <script src="scripts/svg.js"></script>
   <script src="scripts/hexObj.js"></script>
+  <script src='scripts/modalScripts.js'>  </script>
+
 
   <style>
   </style>
 </head>
 
 <body>
+  <div id='hidetitle'>
   <div id="title">
   <h1> HEX TEST </h1>
-  <p id= 'title'>(qualitative rating scale)</p>
   <div id='openModal'>Contribute Yourself to the Map</div>
-</div>
+</div></div>
 
 <div id='modal'>
 <div id="formWrapper">
@@ -109,33 +111,6 @@
 
   <div id="container"></div>
   <!-- <div id="containerTwo"></div> -->
-
-  <script>
-//script from w3schools modal tutorial
-var modal = document.getElementById("modal");
-let formContainer = document.getElementById("formWrapper");
-let title = document.getElementById("title");
-var btn = document.getElementById("openModal");
-var close = document.getElementById("button");
-
-btn.onclick = function() {
-  modal.style.display = "block";
-  formContainer.style.display ="block";
-  title.style.display ='none';
-}
-close.onclick = function() {
-  modal.style.display = "none";
-  title.style.display ='block';
-
-}
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-    title.style.display ='block';
-
-  }
-}
-  </script>
 
   <script src="scripts/ajaxPost.js"></script>
 </body>
