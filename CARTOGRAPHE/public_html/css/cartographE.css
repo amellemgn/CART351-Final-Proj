@@ -125,6 +125,22 @@ input[type=text]{
   padding: 20px;
 }
 
+#sortOptions{
+  position:absolute;
+  z-index:5;
+  margin-left: 88%;
+  margin-top: 3%;
+}
+
+.sortButtons{
+  background-color: rgba(255,255,255,0.7);
+  width: 130px;
+  border-radius:20px;
+  border-style: outset;
+  padding: 10px;
+  font-weight: bold;
+}
+
 #textFromInput{
   position: absolute;
   z-index: 10;

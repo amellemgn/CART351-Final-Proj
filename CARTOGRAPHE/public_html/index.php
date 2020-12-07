@@ -74,6 +74,11 @@
   <div id='openModal'>Contribute Yourself to the Map</div>
 </div></div>
 
+  <div id='sortOptions'>
+  <button type="button" class='sortbuttons'id='color1' >Sort by (FIRST COLOR)</button></br>
+  <button type="button" class='sortbuttons'id='color2'>Sort by (SECOND COLOR)</button></br>
+  <button type="button" class='sortbuttons'id='scatter'>Reset scattered view</button></div>
+
 <div id='modal'>
 <div id="formWrapper">
   <form id='hexForm'  action="" enctype ="form-data">
@@ -114,7 +119,7 @@
   <div id="container"></div>
   <!-- <div id="containerTwo"></div> -->
 
-  <script src="scripts/ajaxPost.js"></script>
+  <script src="scripts/ajaxPost0.js"></script>
 </body>
 
 </html>

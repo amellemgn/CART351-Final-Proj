@@ -38,25 +38,25 @@ $(document).ready(function() {
       let firstJSON = JSON.parse(initialResponse);
       // console.log(firstJSON);
       displayHexes(firstJSON);
+      // hexGrid(firstJSON);
 
       $('#color1').on('click',function(){
 
-        hexGrid(firstJSON);
+      // displayHexes(firstJSON);
+      colourToggle = false;
+       hexGrid(firstJSON);
+      //  console.log("here in color1")
         // gridToggle = true;
       });
-      $('#color2').on('click',function(){
-        response.sort(function(a, b){
-         return a.color1-b.color1;
-            });
-            hexGrid(firstJSON);
-        // gridToggle = true;
-      });
-
-
-      $('#scatter').on('click',function(){
-        displayHexes(firstJSON);
-        // gridToggle = true;
-      });
+      // $('#color2').on('click',function(){
+      //   colorToggle = true;
+      //   hexGrid(firstJSON);
+      //       });
+      //
+      // $('#scatter').on('click',function(){
+      //   displayHexes(firstJSON);
+      //   // gridToggle = true;
+      // });
 
 
       // hexGrid(firstJSON);
@@ -205,20 +205,20 @@ $(document).ready(function() {
     }
 
   function hexGrid(response){
-
+    console.log("here");
     console.log(response);
 
- // // if (colorToggle === false){
- //    response.sort(function(a, b){
- //      return a.color1-b.color1;
- //    });
- //  // }
-      // else if (colorToggle === true){
-      //   response.sort(function(a, b){
-      //     return a.color1-b.color1;
-      //   }};
-      // }
-    // console.log(response);
+  if (colorToggle === false){
+    response.sort(function(a, b){
+      return a.color1-b.color1;
+    });
+  }
+      else if (colorToggle === true){
+        response.sort(function(a, b){
+          return a.color1-b.color1;
+        });
+      }
+    console.log(response);
     let count = 0;
 
     for (i=0;i<response.length;i++){
