@@ -1,4 +1,4 @@
-$(document).ready(function(init) {
+$(document).ready(function() {
 
   let hexObjs = [];
 
@@ -9,11 +9,12 @@ $(document).ready(function(init) {
   let tileY;
   let inputText;
 
+  let gridToggle = false;
+
   let docWidth = document.getElementById('container').clientWidth;
   let docHeight = document.getElementById('container').clientHeight;
 
 
-// init.preventDefault();
   $.ajax({
     type: "GET",
     url: "../getWholePage.php",
@@ -34,7 +35,9 @@ $(document).ready(function(init) {
 
       let firstJSON = JSON.parse(initialResponse);
       // console.log(firstJSON);
-      displayHexes(firstJSON);
+      // displayHexes(firstJSON);
+      hexGrid(firstJSON);
+
       mouseLocate(firstJSON);
 
       console.log(hexObjs);
@@ -116,6 +119,7 @@ $(document).ready(function(init) {
       });
       // document.getElementById(count).style.top=tileY;
       newHex.display();
+      // hexGrid(newHex);
       newHex.appendGradient();
     }
 
@@ -141,6 +145,7 @@ $(document).ready(function(init) {
       });
       // document.getElementById(count).style.top=tileY;
       newHex.display();
+      // hexGrid(newHex);
       newHex.appendGradient();
     }
     }
@@ -159,7 +164,6 @@ $(document).ready(function(init) {
         let words = hexObjs[i].userText;
 
         $('#' + hexId).on('click', function() {
-          console.log("hiiiii");
           let textContainer = $("<div>").attr("id", i).addClass('displayInput').text(words);
           textContainer.css({
             'margin-top': objPosY,
@@ -174,6 +178,52 @@ $(document).ready(function(init) {
         });
       }
     }
+
+  function hexGrid(response){
+
+    for (i=0;i<response.length;i++){
+
+    huevalue = response[i].color1;
+    huevalue2 = response[i].color2;
+    inputText = response[i].userText;
+    count = response[i].userID;
+
+  let  xOffset = 75;
+  let h= Math.floor(Math.sqrt(3)*50);
+  let yOffset =50;
+  let mod = 18;
+
+  let divisor = Math.floor(count/mod)*h;
+  console.log(divisor);
+    xPos = (count%mod)*xOffset+xOffset;
+    yPos = yOffset+(count%2)*h/2 + divisor;
+
+    let honeyCombGrid = [];
+
+    honeyCombGrid.push(new HexObj(50, 50, huevalue, huevalue2, inputText, count));
+    $('#' + count).css({
+      'margin-left': xPos,
+      'margin-top': yPos
+    });
+
+    for(let i =0; i<honeyCombGrid.length;i++){
+      console.log(honeyCombGrid.length);
+      honeyCombGrid[i].display();
+      honeyCombGrid[i].appendGradient();
+
+    }
+}
+
+}
+
+
+
+
+
+
+
+
+
 
   //
   // const gridContainer = document.getElementById("container");
