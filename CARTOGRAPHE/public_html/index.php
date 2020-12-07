@@ -57,6 +57,8 @@
   <link rel="stylesheet" type="text/css" href="css/cartographE.css">
   <script src="scripts/honeycomb.min.js"></script>
   <script src="scripts/svg.js"></script>
+  <script nomodule src="scripts/index.js"></script>
+
   <script src="scripts/hexObj.js"></script>
   <script src='scripts/modalScripts.js'>  </script>
 

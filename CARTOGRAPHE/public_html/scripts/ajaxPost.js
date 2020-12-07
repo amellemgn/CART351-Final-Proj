@@ -15,6 +15,7 @@ $(document).ready(function() {
   let docHeight = document.getElementById('container').clientHeight;
 
 
+
   $.ajax({
     type: "GET",
     url: "../getWholePage.php",
@@ -40,7 +41,7 @@ $(document).ready(function() {
 
       mouseLocate(firstJSON);
 
-      console.log(hexObjs);
+      // console.log(hexObjs);
 
       //reset the form
       // $('#hexForm')[0].reset();
@@ -181,22 +182,32 @@ $(document).ready(function() {
 
   function hexGrid(response){
 
+    let count = 0;
+    console.log(response);
+
+    response.sort(function(a, b){
+      return a.color1-b.color1;
+    });
+    // console.log(response);
+
     for (i=0;i<response.length;i++){
 
     huevalue = response[i].color1;
+    // console.log('the hue value is'+ huevalue);
+
     huevalue2 = response[i].color2;
     inputText = response[i].userText;
-    count = response[i].userID;
+    count++;
 
   let  xOffset = 75;
   let h= Math.floor(Math.sqrt(3)*50);
   let yOffset =50;
-  let mod = 18;
+  let mod = 16;
 
   let divisor = Math.floor(count/mod)*h;
-  console.log(divisor);
-    xPos = (count%mod)*xOffset+xOffset;
-    yPos = yOffset+(count%2)*h/2 + divisor;
+  // console.log(divisor);
+    xPos = (count%mod)*xOffset+225;
+    yPos = yOffset+(count%2)*h/2 + divisor + 75;
 
     let honeyCombGrid = [];
 
@@ -207,7 +218,6 @@ $(document).ready(function() {
     });
 
     for(let i =0; i<honeyCombGrid.length;i++){
-      console.log(honeyCombGrid.length);
       honeyCombGrid[i].display();
       honeyCombGrid[i].appendGradient();
 
