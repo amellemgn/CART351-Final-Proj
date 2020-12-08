@@ -248,43 +248,4 @@ $(document).ready(function() {
 }
 
 
-(function blink() {
-  let randomAmount = Math.random() * (8000 - 7000) + 7000;
-  console.log("blink");
-  $('.blink').fadeOut(randomAmount).fadeIn(5000, blink);
-})();
-
-
-
-
-  //
-  // const gridContainer = document.getElementById("container");
-  // let rows = document.getElementsByClassName("gridRow");
-  // let cells = document.getElementsByClassName("cell")
-  // drawGrid();
-  // function drawGrid() {
-  // console.log("drawGrid");
-  //   drawRows(12);
-  //   drawColumns(12);
-  // }
-  //
-  // function drawRows(rowNum) {
-  //   console.log("drawRows called");
-  //   for (r = 0; r < rowNum; r++) {
-  //     let row = document.createElement("div");
-  //     container.appendChild(row).className = "gridRow";
-  //   };
-  // };
-  //
-  // function drawColumns(cellNum) {
-  //   console.log("drawColumns called");
-  //   console.log(rows.length);
-  //   for (i = 0; i < 12; i++) {
-  //     for (j = 0; j < cellNum; j++) {
-  //       let newCell = document.createElement("div");
-  //       rows[j].appendChild(newCell).className = "cell";
-  //     };
-  //   };
-  // };
-
 });

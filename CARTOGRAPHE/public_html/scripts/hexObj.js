@@ -20,7 +20,7 @@ this.b=0;
 this.a=1;
 this.hexID =id;
 let self = this;
-this.draw = SVG().addTo('#container').size('100px', '100px').id(this.hexID).addClass("blink");
+this.draw = SVG().addTo('#container').size('100px', '100px').id(this.hexID).addClass("hello");
 
 // this is also used in the gradient function so we're defining
 // self as an alt 'this'
@@ -43,9 +43,8 @@ this.display = function(){
   this.hexSymbol = this.draw.symbol()
     // map the corners' positions to a string and create a polygon
     .polygon(this.positions.map(({ x, y }) => `${x},${y}`))
-      // .addClass("blink");
      // .fill('#FFFFFF')
-     // .id("blinkHex");
+    // .id("hexagon")
     // .stroke({ width: 1, color: '#999' })
     this.draw.use(this.hexSymbol);
       //draw.use(hexSymbol).translate(50, 10);
@@ -67,11 +66,6 @@ this.display = function(){
     })
   //  this.draw.append('<svg id="gradientdef"><defs><linearGradient id = "gradient 1"<stop class="stop1" offset="0%" style="stop-color:white/> <stop class="stop2" offset="50%" style="stop-color:blue/> /> </linearGradient></defs></svg>');
     this.hexSymbol.attr({fill:gradient});
-
-    // this.hexSymbol.id("blink");
-    // this.hexSymbol.animate({fill:
-    //
-    // }, slow);
   }
 
  // this.appendText= function(){
