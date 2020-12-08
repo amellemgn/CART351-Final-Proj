@@ -21,7 +21,7 @@ font-size:50px;
 
   #bodyText{
     position: absolute;
-    margin-top: -2%;
+    margin-top: -5%;
     z-index:2;
     background-color: rgba(255,255,255,0.4);
     border-radius: 20px;
@@ -35,13 +35,26 @@ font-size:50px;
   }
 
 #navigateToMain{
+  text-decoration: none;
+  color: navy;
   padding: 20px;
   font-family:'Martel Sans';
   font-size: 20px;
   border-radius: 20px;
   border-style: outset;
   background-color: rgba(255,255,255,0.4);
+  position:inherit;
+  margin-left: 30%;
+  margin-top:20%;
+}
+
+#buttonDiv{
   position: absolute;
-  margin-left: 20%;
-  margin-top:10%;
+  background-image:url('button_bg.gif');
+  width: 25%;
+  height: 30%;
+  background-position: cover;
+  border-radius: 30px;
+  margin-left: 12%;
+  margin-top: 7%;
 }
