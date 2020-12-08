@@ -36,19 +36,25 @@ $(document).ready(function() {
       //use the JSON .parse function to convert the JSON string into a Javascript object
 
       let firstJSON = JSON.parse(initialResponse);
-      // console.log(firstJSON);
-      displayHexes(firstJSON);
+      console.log("INITIAL");
+      console.log(firstJSON);
+     //  displayHexes(firstJSON);
+     hexGrid(firstJSON);
 
       $('#color1').on('click',function(){
 
-        hexGrid(firstJSON);
+    //  displayHexes(firstJSON);
+      console.log("in on click:: ");
+      console.log(firstJSON)
+      hexGrid(firstJSON);
+      //  console.log("here in color1")
         // gridToggle = true;
       });
       $('#color2').on('click',function(){
-        response.sort(function(a, b){
+        firstJSON.sort(function(a, b){
          return a.color1-b.color1;
             });
-            hexGrid(firstJSON);
+          //  hexGrid(firstJSON);
         // gridToggle = true;
       });
 
@@ -106,6 +112,7 @@ $(document).ready(function() {
         //use the JSON .parse function to convert the JSON string into a Javascript object
 
         let parsedJSON = JSON.parse(response);
+
         console.log(parsedJSON);
         displayLastHex(parsedJSON);
         mouseLocate(parsedJSON);
@@ -147,6 +154,7 @@ $(document).ready(function() {
     }
 
     function displayHexes(response){
+
       for (i=0;i<response.length;i++){
 
       huevalue = response[i].color1;
@@ -155,6 +163,7 @@ $(document).ready(function() {
       yRange = response[i].yPos;
       inputText = response[i].userText;
       count = response[i].userID;
+      console.log(count);
 
       tileX = xRange * docWidth;
       tileY = yRange * docHeight;
@@ -184,7 +193,7 @@ $(document).ready(function() {
         let objPosX = $('#' + hexId).css('margin-left');
         let objPosY = $('#' + hexId).css('margin-top');
 
-        console.log(objPosY);
+      //  console.log(objPosY);
 
         let words = hexObjs[i].userText;
 
@@ -205,22 +214,25 @@ $(document).ready(function() {
     }
 
   function hexGrid(response){
+    //>> HERE
+    $("#container").empty();
+  //  console.log("here");
+  //  console.log(response);
 
-    console.log(response);
-
- // // if (colorToggle === false){
- //    response.sort(function(a, b){
- //      return a.color1-b.color1;
- //    });
- //  // }
-      // else if (colorToggle === true){
-      //   response.sort(function(a, b){
-      //     return a.color1-b.color1;
-      //   }};
-      // }
-    // console.log(response);
+  if (colorToggle === false){
+    response.sort(function(a, b){
+      return a.color1-b.color1;
+    });
+  }
+      else if (colorToggle === true){
+        response.sort(function(a, b){
+          return a.color1-b.color1;
+        });
+      }
+    //console.log(response);
     let count = 0;
-
+//console.log("response length");
+//console.log(response.length);
     for (i=0;i<response.length;i++){
 
     huevalue = response[i].color1;
@@ -229,6 +241,9 @@ $(document).ready(function() {
     huevalue2 = response[i].color2;
     inputText = response[i].userText;
     count ++;
+  //  count = response[i].userID;
+  //  console.log(count);
+
 
   let xMargin = 225;
   let yMargin = xMargin/2;
@@ -242,7 +257,7 @@ $(document).ready(function() {
     xPos = (count%mod)*xOffset+xMargin;
     yPos = yOffset+(count%2)*h/2 + divisor + yMargin;
 
-    let honeyCombGrid = [];
+  //  let honeyCombGrid = [];
 
     let newHex = new HexObj(50, 50, huevalue, huevalue2, inputText, count);
     $('#' + count).css({
@@ -252,7 +267,7 @@ $(document).ready(function() {
 
     // for(let i =0; i<response.length;i++){
     newHex.display();
-      newHex.appendGradient();
+     newHex.appendGradient();
 
     // }
 }

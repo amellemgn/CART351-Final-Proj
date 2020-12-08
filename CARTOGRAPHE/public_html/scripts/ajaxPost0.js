@@ -192,6 +192,7 @@ $(document).ready(function() {
     }
 
   function hexGrid(response){
+
     console.log("here");
     console.log(response);
 

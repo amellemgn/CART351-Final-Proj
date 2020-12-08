@@ -119,7 +119,7 @@
   <div id="container"></div>
   <!-- <div id="containerTwo"></div> -->
 
-  <script src="scripts/ajaxPost0.js"></script>
+  <script src="scripts/script.js"></script>
 </body>
 
 </html>
