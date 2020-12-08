@@ -43,30 +43,25 @@ $(document).ready(function() {
       $('#color1').on('click',function(){
 
       // displayHexes(firstJSON);
-      colourToggle = false;
+      colorToggle = false;
        hexGrid(firstJSON);
       //  console.log("here in color1")
         // gridToggle = true;
       });
-      // $('#color2').on('click',function(){
-      //   colorToggle = true;
-      //   hexGrid(firstJSON);
-      //       });
+      $('#color2').on('click',function(){
+        colorToggle = true;
+        hexGrid(firstJSON);
+            });
       //
-      // $('#scatter').on('click',function(){
-      //   displayHexes(firstJSON);
-      //   // gridToggle = true;
-      // });
+      $('#scatter').on('click',function(){
+        displayHexes(firstJSON);
+      });
 
 
       // hexGrid(firstJSON);
 
       mouseLocate(firstJSON);
 
-      // console.log(hexObjs);
-
-      //reset the form
-      // $('#hexForm')[0].reset();
     },
     error: function() {
       console.log("error occurred");
@@ -80,11 +75,6 @@ $(document).ready(function() {
     console.log("button clicked");
     let form = $('#hexForm')[0];
     let data = new FormData(form);
-
-    // for (
-    //   let valuePairs of data.entries()) {
-    //   console.log(valuePairs[0] + ',' + valuePairs[1]);
-    // }
 
 
     $.ajax({
@@ -215,20 +205,21 @@ $(document).ready(function() {
   }
       else if (colorToggle === true){
         response.sort(function(a, b){
-          return a.color1-b.color1;
+          return a.color2-b.color2;
         });
       }
-    console.log(response);
-    let count = 0;
+
+      console.log('the color toggle is' + colorToggle);
+    let count=0;
 
     for (i=0;i<response.length;i++){
+      count++;
 
     huevalue = response[i].color1;
     // console.log('the hue value is'+ huevalue);
 
     huevalue2 = response[i].color2;
     inputText = response[i].userText;
-    count ++;
 
   let xMargin = 225;
   let yMargin = xMargin/2;
@@ -244,17 +235,17 @@ $(document).ready(function() {
 
     let honeyCombGrid = [];
 
-    let newHex = new HexObj(50, 50, huevalue, huevalue2, inputText, count);
-    $('#' + count).css({
+    honeyCombGrid.push(new HexObj(50, 50, huevalue, huevalue2, inputText, count));
+    $('#' + response[i].userID).css({
       'margin-left': xPos,
       'margin-top': yPos
     });
 
-    // for(let i =0; i<response.length;i++){
-      newHex.display();
-      newHex.appendGradient();
+     for(let i =0; i<honeyCombGrid.length;i++){
+    honeyCombGrid[i].display();
+      honeyCombGrid[i].appendGradient();
 
-    // }
+     }
 }
 
 }
