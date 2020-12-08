@@ -57,9 +57,6 @@ $(document).ready(function() {
         displayHexes(firstJSON);
       });
 
-
-      // hexGrid(firstJSON);
-
       mouseLocate(firstJSON);
 
     },
