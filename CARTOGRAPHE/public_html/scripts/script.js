@@ -39,26 +39,31 @@ $(document).ready(function() {
       console.log("INITIAL");
       console.log(firstJSON);
       displayHexes(firstJSON);
-     // hexGrid(firstJSON);
+      // hexGrid(firstJSON);
 
-      $('#color1').on('click',function(){
+      $('#color1').on('click', function() {
         colorToggle = false;
-    //  displayHexes(firstJSON);
-      console.log("in on click:: ");
-      console.log(firstJSON)
-      hexGrid(firstJSON);
+        //  displayHexes(firstJSON);
+        console.log("in on click:: ");
+        console.log(firstJSON)
+        hexGrid(firstJSON);
+        mouseLocate(firstJSON);
 
       });
-      $('#color2').on('click',function(){
-        firstJSON.sort(function(a, b){
-         return a.color2-b.color2;
-            });
-           hexGrid(firstJSON);
+      $('#color2').on('click', function() {
+        firstJSON.sort(function(a, b) {
+          return a.color2 - b.color2;
+        });
+        hexGrid(firstJSON);
+        mouseLocate(firstJSON);
+
       });
 
 
-      $('#scatter').on('click',function(){
+      $('#scatter').on('click', function() {
         displayHexes(firstJSON);
+        mouseLocate(firstJSON);
+
       });
 
       mouseLocate(firstJSON);
@@ -117,36 +122,37 @@ $(document).ready(function() {
       }
     });
   });
-    function displayLastHex(response) {
 
-      index = response.length - 1;
-      huevalue = response[index].color1;
-      huevalue2 = response[index].color2;
-      xRange = response[index].xPos;
-      yRange = response[index].yPos;
-      inputText = response[index].userText;
-      count = response[index].userID;
+  function displayLastHex(response) {
 
-      tileX = (xRange * docWidth)-100;
-      tileY = yRange * (docHeight)-100;
+    index = response.length - 1;
+    huevalue = response[index].color1;
+    huevalue2 = response[index].color2;
+    xRange = response[index].xPos;
+    yRange = response[index].yPos;
+    inputText = response[index].userText;
+    count = response[index].userID;
 
-      let newHex = new HexObj(50, 50, huevalue, huevalue2, inputText, count);
-      hexObjs.push(newHex);
+    tileX = (xRange * docWidth) - 100;
+    tileY = yRange * (docHeight) - 100;
 
-      $('#' + count).css({
-        'margin-left': tileX,
-        'margin-top': tileY
-      });
-      // document.getElementById(count).style.top=tileY;
-      newHex.display();
-      // hexGrid(newHex);
-      newHex.appendGradient();
-    }
+    let newHex = new HexObj(50, 50, huevalue, huevalue2, inputText, count);
+    hexObjs.push(newHex);
 
-    function displayHexes(response){
-      $("#container").empty();
+    $('#' + count).css({
+      'margin-left': tileX,
+      'margin-top': tileY
+    });
+    // document.getElementById(count).style.top=tileY;
+    newHex.display();
+    // hexGrid(newHex);
+    newHex.appendGradient();
+  }
 
-      for (i=0;i<response.length;i++){
+  function displayHexes(response) {
+    $("#container").empty();
+
+    for (i = 0; i < response.length; i++) {
 
       huevalue = response[i].color1;
       huevalue2 = response[i].color2;
@@ -169,137 +175,91 @@ $(document).ready(function() {
       newHex.display();
       newHex.appendGradient();
     }
-    }
+  }
 
-    function mouseLocate(hexObjs) {
+  function mouseLocate(hexObjs) {
 
-      console.log('i am being called');
+    console.log('i am being called');
 
-      for (i = 0; i < hexObjs.length; i++) {
-        let hexId = hexObjs[i].userID;
-        let obj = hexObjs[i];
+    for (i = 0; i < hexObjs.length; i++) {
+      let hexId = hexObjs[i].userID;
+      let obj = hexObjs[i];
 
-        let objPosX = $('#' + hexId).css('margin-left');
-        let objPosY = $('#' + hexId).css('margin-top');
+      let objPosX = $('#' + hexId).css('margin-left');
+      let objPosY = $('#' + hexId).css('margin-top');
 
       //  console.log(objPosY);
 
-        let words = hexObjs[i].userText;
+      let words = hexObjs[i].userText;
 
-        $('#' + hexId).on('click', function() {
-          let textContainer = $("<div>").attr("id", i).addClass('displayInput').text(words);
-          textContainer.css({
-            'margin-top': objPosY,
-            'margin-left': objPosX
-          });
-          textContainer.appendTo('#container');
-
-          textContainer.on('click', function() {
-            console.log("hey");
-            this.remove();
-          });
+      $('#' + hexId).on('click', function() {
+        let textContainer = $("<div>").attr("id", i).addClass('displayInput').text(words);
+        textContainer.css({
+          'margin-top': objPosY,
+          'margin-left': objPosX
         });
-      }
-    }
+        textContainer.appendTo('#container');
 
-  function hexGrid(response){
+        textContainer.on('click', function() {
+          console.log("hey");
+          this.remove();
+        });
+      });
+    }
+  }
+
+  function hexGrid(response) {
     //>> HERE
     $("#container").empty();
-  //  console.log("here");
-  //  console.log(response);
+    //  console.log("here");
+    //  console.log(response);
 
-  if (colorToggle === false){
-    response.sort(function(a, b){
-      return a.color1-b.color1;
-    });
-  }
-      else if (colorToggle === true){
-        response.sort(function(a, b){
-          return a.color1-b.color1;
-        });
-      }
-    //console.log(response);
+    if (colorToggle === false) {
+      response.sort(function(a, b) {
+        return a.color1 - b.color1;
+      });
+    } else if (colorToggle === true) {
+      response.sort(function(a, b) {
+        return a.color1 - b.color1;
+      });
+    }
     let count = 0;
-//console.log("response length");
-//console.log(response.length);
-    for (i=0;i<response.length;i++){
 
-    huevalue = response[i].color1;
-    // console.log('the hue value is'+ huevalue);
+    for (i = 0; i < response.length; i++) {
 
-    huevalue2 = response[i].color2;
-    inputText = response[i].userText;
-    count ++;
-  //  count = response[i].userID;
-  //  console.log(count);
-
-
-  let xMargin = 225;
-  let yMargin = xMargin/2;
-  let  xOffset = 75;
-  let h= Math.floor(Math.sqrt(3)*50);
-  let yOffset =50;
-  let mod = 16;
-
-  let divisor = Math.floor(count/mod)*h;
-  // console.log(divisor);
-    xPos = (count%mod)*xOffset+xMargin;
-    yPos = yOffset+(count%2)*h/2 + divisor + yMargin;
-
-  //  let honeyCombGrid = [];
-
-    let newHex = new HexObj(50, 50, huevalue, huevalue2, inputText, count);
-    $('#' + count).css({
-      'margin-left': xPos,
-      'margin-top': yPos
-    });
-
-    // for(let i =0; i<response.length;i++){
-    newHex.display();
-     newHex.appendGradient();
-
-    // }
-}
-
-}
+      huevalue = response[i].color1;
+      huevalue2 = response[i].color2;
+      inputText = response[i].userText;
+      count++;
 
 
 
+      let xMargin = 225;
+      let yMargin = xMargin / 2;
+      let xOffset = 75;
+      let h = Math.floor(Math.sqrt(3) * 50);
+      let yOffset = 50;
+      let mod = 16;
+
+      let divisor = Math.floor(count / mod) * h;
+      // console.log(divisor);
+      xPos = (count % mod) * xOffset + xMargin;
+      yPos = yOffset + (count % 2) * h / 2 + divisor + yMargin;
 
 
+      let newHex = new HexObj(50, 50, huevalue, huevalue2, inputText, count);
+      $('#' + count).css({
+        'margin-left': xPos,
+        'margin-top': yPos
+      });
 
+      newHex.display();
+      newHex.appendGradient();
 
+      // }
+    }
 
+  }
 
-
-  //
-  // const gridContainer = document.getElementById("container");
-  // let rows = document.getElementsByClassName("gridRow");
-  // let cells = document.getElementsByClassName("cell")
-  // drawGrid();
-  // function drawGrid() {
-  // console.log("drawGrid");
-  //   drawRows(12);
-  //   drawColumns(12);
-  // }
-  //
-  // function drawRows(rowNum) {
-  //   console.log("drawRows called");
-  //   for (r = 0; r < rowNum; r++) {
-  //     let row = document.createElement("div");
-  //     container.appendChild(row).className = "gridRow";
-  //   };
-  // };
-  //
-  // function drawColumns(cellNum) {
-  //   console.log("drawColumns called");
-  //   console.log(rows.length);
-  //   for (i = 0; i < 12; i++) {
-  //     for (j = 0; j < cellNum; j++) {
-  //       let newCell = document.createElement("div");
-  //       rows[j].appendChild(newCell).className = "cell";
-  //     };
-  //   };
-  // };
 
 });
