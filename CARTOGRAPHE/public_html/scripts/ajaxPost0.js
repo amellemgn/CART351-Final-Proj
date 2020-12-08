@@ -251,7 +251,7 @@ $(document).ready(function() {
     });
 
     // for(let i =0; i<response.length;i++){
-    newHex.display();
+      newHex.display();
       newHex.appendGradient();
 
     // }
@@ -260,10 +260,11 @@ $(document).ready(function() {
 }
 
 
-
-
-
-
+(function blink() {
+  let randomAmount = Math.random() * (8000 - 7000) + 7000;
+  console.log("blink");
+  $('.blink').fadeOut(randomAmount).fadeIn(5000, blink);
+})();
 
 
 
