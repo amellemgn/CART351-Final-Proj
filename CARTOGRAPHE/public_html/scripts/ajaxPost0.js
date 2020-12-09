@@ -42,10 +42,9 @@ $(document).ready(function() {
       // hexGrid(firstJSON);
 
       $('#color1').on('click', function() {
-        colorToggle = false;
-        //  displayHexes(firstJSON);
-        console.log("in on click:: ");
-        console.log(firstJSON)
+        firstJSON.sort(function(a, b) {
+          return a.color1 - b.color1;
+        });
         hexGrid(firstJSON);
         mouseLocate(firstJSON);
 
@@ -209,20 +208,8 @@ $(document).ready(function() {
   }
 
   function hexGrid(response) {
-    //>> HERE
     $("#container").empty();
-    //  console.log("here");
-    //  console.log(response);
 
-    if (colorToggle === false) {
-      response.sort(function(a, b) {
-        return a.color1 - b.color1;
-      });
-    } else if (colorToggle === true) {
-      response.sort(function(a, b) {
-        return a.color1 - b.color1;
-      });
-    }
     let count = 0;
 
     for (i = 0; i < response.length; i++) {
@@ -242,7 +229,6 @@ $(document).ready(function() {
       let mod = 16;
 
       let divisor = Math.floor(count / mod) * h;
-      // console.log(divisor);
       xPos = (count % mod) * xOffset + xMargin;
       yPos = yOffset + (count % 2) * h / 2 + divisor + yMargin;
 
@@ -255,8 +241,6 @@ $(document).ready(function() {
 
       newHex.display();
       newHex.appendGradient();
-
-      // }
     }
 
   }

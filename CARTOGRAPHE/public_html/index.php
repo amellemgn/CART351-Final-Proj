@@ -70,41 +70,42 @@
 <body>
   <div id='hidetitle'>
   <div id="title">
-  <h1> HEX TEST </h1>
+  <h1 id='firstTitle'> CARTOGRAPH-E: a collective emotional map.</h1>
+    At any time, click on any of the tiles to view their message.
   <div id='openModal'>Contribute Yourself to the Map</div>
 </div></div>
 
   <div id='sortOptions'>
-  <button type="button" class='sortbuttons'id='color1' >Sort by (FIRST COLOR)</button></br>
-  <button type="button" class='sortbuttons'id='color2'>Sort by (SECOND COLOR)</button></br>
-  <button type="button" class='sortbuttons'id='scatter'>Reset scattered view</button></div>
+  <button type="button" class='sortbuttons'id='color1' >SORT BY PHYSICAL STATE</button></br>
+  <button type="button" class='sortbuttons'id='color2'>SORT BY MENTAL STATE</button></br>
+  <button type="button" class='sortbuttons'id='scatter'>RESET SPATIAL VIEW</button></div>
 
 <div id='modal'>
 <div id="formWrapper">
   <form id='hexForm'  action="" enctype ="form-data">
   <fieldset>
   <div class="qs" id="q1">
-    <p>From the ocean to the desert, where do you bury your toes</p>
+    <p>Are your thoughts crisp and bright, or foggy and turbulent?</p>
     <input type="range" id="hue1" name ='hue1' min="0" max="255" step="1" />
   </div>
 
   <div class="qs" id="q2">
-    <p>From overcast nightmare to balmy fantasy, how did you dream</p>
+    <p>Is your heart steady and serene or flushed and pounding?</p>
     <input type="range" id="hue2" name ='hue2' min="0" max="255" step="1"/>
   </div>
 
   <div class="qs" id="q3">
-    <p>From Sunrise to Sunset, where does your gaze stray</p>
+    <p>How far into the future do you trust yourself to look? A moment or a lifetime forwards?</p>
     <input type="range" id="xRange" name='xRange' min="0" max="1"step="0.01" />
   </div>
 
   <div class="qs" id="q4">
-    <p>From still pond at dusk to cloud of flustered insects, how busy is your heart</p>
+    <p>Do you imagine your spirit cast high among the clouds, or burrowing below the earth?</p>
     <input type="range" id="yRange" name='yRange' min="0" max="1" step="0.01" />
   </div>
 
   <div class="qs" id="q6">
-    <p>Can you put into words the character of your affective state? What causes inside or outside you have contributed to it?</p>
+    <p>Describe, represent, or articulate your mood. What causes, inside or outside you have contributed?</p>
     <input type="text" id="inputText" name='userWords' size="24" maxlength = "10000" value="I am here"/>
   </div>
 
