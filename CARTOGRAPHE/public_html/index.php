@@ -72,7 +72,7 @@
   <div id="title">
   <h1 id='firstTitle'> CARTOGRAPH-E: a collective emotional map.</h1>
     At any time, click on any of the tiles to view their message.
-  <div id='openModal'>Contribute Yourself to the Map</div>
+  <div id='openModal'>Locate Yourself on the Map</div>
 </div></div>
 
   <div id='sortOptions'>
