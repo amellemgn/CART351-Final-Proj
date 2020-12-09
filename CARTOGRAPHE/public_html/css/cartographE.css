@@ -33,6 +33,7 @@ form{
   width:10%;
   height:5%;
   margin: 3%;
+  border-style:outset;
 }
 
 #hidetitle:hover {
