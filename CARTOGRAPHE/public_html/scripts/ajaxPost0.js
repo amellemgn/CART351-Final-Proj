@@ -181,6 +181,8 @@ $(document).ready(function() {
     console.log('i am being called');
 
     for (i = 0; i < hexObjs.length; i++) {
+      $('.displayInput').remove();
+
       let hexId = hexObjs[i].userID;
       let obj = hexObjs[i];
 
@@ -192,6 +194,8 @@ $(document).ready(function() {
       let words = hexObjs[i].userText;
 
       $('#' + hexId).on('click', function() {
+        $('.displayInput').remove();
+
         let textContainer = $("<div>").attr("id", i).addClass('displayInput').text(words);
         textContainer.css({
           'margin-top': objPosY,

@@ -76,7 +76,7 @@
 </div></div>
 
   <div id='sortOptions'>
-  <button type="button" class='sortbuttons'id='color1' >SORT BY PHYSICAL STATE</button></br>
+  <button type="button" class='sortbuttons'id='color1' >SORT BY PHYSIOLOGICAL STATE</button></br>
   <button type="button" class='sortbuttons'id='color2'>SORT BY MENTAL STATE</button></br>
   <button type="button" class='sortbuttons'id='scatter'>RESET SPATIAL VIEW</button></div>
 
