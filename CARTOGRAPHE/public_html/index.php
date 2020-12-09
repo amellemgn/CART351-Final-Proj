@@ -109,7 +109,7 @@
     <input type="text" id="inputText" name='userWords' size="24" maxlength = "10000" value="I am here"/>
   </div>
 
-  <input type="submit" id="button" value="Click to Add Yourself">
+  <input type="submit" id="button" value="Click to Be Located">
 
   <fieldset>
     <span class="close">&times;</span>
