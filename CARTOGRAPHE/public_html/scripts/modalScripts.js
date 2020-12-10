@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
 //code largely from W3schools modal tutorial
+//opens form on button click ; form is otherwise invisible
+
 let modal = document.getElementById("modal");
 let formContainer = document.getElementById("formWrapper");
 let title = document.getElementById("title");
@@ -25,12 +27,4 @@ window.onclick = function(event) {
   }
 }
 
-// $('#hidetitle').on('mouseover', function(){
-//   title.style.display= 'block';
-//   $('#hidetitle').css('background-color','rgba(255,255,255,0)');
-//   console.log('IM IN IT NOW BABY');
-// });
-// title.mouseout(function(){
-//   title.style.display = 'none';
-// })
 });

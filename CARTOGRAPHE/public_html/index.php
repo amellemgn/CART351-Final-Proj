@@ -68,6 +68,7 @@
 </head>
 
 <body>
+  <!-- div hidden until hovered over, contains button opening input form -->
   <div id='hidetitle'>
   <div id="title">
   <h1 id='firstTitle'> CARTOGRAPH-E: a collective emotional map.</h1>
@@ -75,11 +76,13 @@
   <div id='openModal'>Locate Yourself on the Map</div>
 </div></div>
 
+<!-- buttons offering different options for spatial sorting of hexagonal tiles -->
   <div id='sortOptions'>
   <button type="button" class='sortbuttons'id='color1' >SORT BY PHYSIOLOGICAL STATE</button></br>
   <button type="button" class='sortbuttons'id='color2'>SORT BY MENTAL STATE</button></br>
   <button type="button" class='sortbuttons'id='scatter'>RESET SPATIAL VIEW</button></div>
 
+<!-- input form, containing input sliders and text field -->
 <div id='modal'>
 <div id="formWrapper">
   <form id='hexForm'  action="" enctype ="form-data">
@@ -105,18 +108,18 @@
   </div>
 
   <div class="qs" id="q6">
-    <p>Describe, represent, or articulate your mood. What causes, inside or outside you have contributed?</p>
+    <p>Describe, represent, or articulate your mood. What causes, internal or external, have contributed?</p>
     <input type="text" id="inputText" name='userWords' size="24" maxlength = "10000" value="I am here"/>
   </div>
 
   <input type="submit" id="button" value="Click to Be Located">
 
   <fieldset>
-    <span class="close">&times;</span>
   </form>
 </div>
 </div>
 
+<!-- container consituting the main area of the 'map' page -->
   <div id="container"></div>
   <!-- <div id="containerTwo"></div> -->
 

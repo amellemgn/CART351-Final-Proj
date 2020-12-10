@@ -13,3 +13,5 @@ try
       echo $e->getMessage();
     }
 ?>
+
+<!-- page deletes all hexagons from database - made mostly so that we could clear our test tiles -->

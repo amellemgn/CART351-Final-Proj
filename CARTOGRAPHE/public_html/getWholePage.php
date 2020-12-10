@@ -28,3 +28,5 @@
          exit;
 
   ?>
+
+  <!-- page retrieves all entries in database -->

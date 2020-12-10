@@ -68,15 +68,7 @@ this.display = function(){
     this.hexSymbol.attr({fill:gradient});
   }
 
- // this.appendText= function(){
- //   console.log(inputText);
- //   let newTextDiv = '<div>'+ this.inputText+ '</div>';
- //   $('#container').append(newTextDiv);
- //   $(newTextDiv).css({top: this.centerX, left: this.centerX});
- //   //uhhh this doesnt work because theyre not separate svg elements.
- //   // this.hexSymbol.hover(this.("#textFromInput").css("display","block"), $("textFromInput").css("display", "none"));
- // }
-
+ 
 }//end class
 
 /** HELPER **/

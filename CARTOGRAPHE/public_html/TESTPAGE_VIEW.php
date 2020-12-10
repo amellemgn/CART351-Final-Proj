@@ -5,7 +5,7 @@
 </head>
 
 <body>
-
+<!-- page displays all entries in database in plain text -->
 <?php
 require('createHexDB.php');
 
