@@ -18,7 +18,7 @@ $(document).ready(function() {
 // first get function, run when page loads
   $.ajax({
     type: "GET",
-    url: "../getWholePage.php",
+    url: "https://hybrid.concordia.ca/j_galb/CARTOGRAPHE/public_html/getWholePage.php",
     data: 'json',
     processData: false, //prevents from converting into a query string
     contentType: false,
@@ -84,7 +84,7 @@ $(document).ready(function() {
     $.ajax({
       type: "POST",
       enctype: 'form-data',
-      url: "../index.php",
+      url: "https://hybrid.concordia.ca/j_galb/CARTOGRAPHE/public_html/index.php",
       data: data,
       processData: false, //prevents from converting into a query string
       contentType: false,
